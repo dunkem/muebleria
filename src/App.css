@@ -12,7 +12,6 @@ body {
 .Cards {
   display: flex;
   flex-direction: row;
-
   justify-content: center;
   margin: 10px;
 }
@@ -24,8 +23,9 @@ body {
   justify-content: space-around;
   margin: 10px;
 }
+
 .navbutton {
-  margin: 2px;
+  margin: 10px;
 }
 
 .contact {
@@ -35,18 +35,22 @@ body {
   padding: 20px;
   border-radius: 5px;
 }
+
 .icwass {
   width: 40px;
 }
+
 .link {
   text-decoration: none;
   color: black;
 }
+
 .itemCount {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .carrito {
   display: flex;
   flex-direction: row;
@@ -54,6 +58,7 @@ body {
   justify-content: space-around;
   align-items: center;
 }
+
 .irCheckout {
   background-color: aliceblue;
   text-align: center;
@@ -62,9 +67,22 @@ body {
   width: auto;
   border-radius: 5px;
 }
+
 .cartContainer {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+.whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.whatsapp-icon {
+  width: 70px; /* Ajustar tamaño del ícono */
+  height: 70px;
 }

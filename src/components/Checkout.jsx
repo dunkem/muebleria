@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useCartContext } from '../context/CartContext'
 import { Button } from 'react-bootstrap'
 import { addDoc, collection, getFirestore } from 'firebase/firestore'
 import swal from 'sweetalert'
-import { useState } from 'react'
 
 export default function Checkout() {
   const { cart, totalPrice, clearCart } = useCartContext()
@@ -13,10 +12,10 @@ export default function Checkout() {
   const [direccion, setDireccion] = useState('')
 
   function validateEmail(email) {
-    var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
-    if (reg.test(email) == false) {
+    const reg = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/
+    if (!reg.test(email)) {
       swal({
-        title: 'El formato de email no es valido',
+        title: 'El formato de email no es válido',
         text: 'ejemplo: nombre@mail.com',
         icon: 'warning',
         button: 'cerrar',
@@ -28,11 +27,11 @@ export default function Checkout() {
   }
 
   function validateTelefono(telefono) {
-    var reg = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
-    if (reg.test(telefono) == false) {
+    const reg = /^[+]?[0-9]{3}?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/im
+    if (!reg.test(telefono)) {
       swal({
-        title: 'El formato del tel no es valido',
-        text: ' cod de area sin el 0 y su numero,ej: 1155555555 ',
+        title: 'El formato del teléfono no es válido',
+        text: 'código de área sin el 0 y su número, ej: 1155555555',
         icon: 'warning',
         button: 'cerrar',
       })
@@ -59,21 +58,20 @@ export default function Checkout() {
 
   const handleClick = () => {
     const db = getFirestore()
-
     const ordersCollection = collection(db, 'orders')
 
-    if (totalPrice() == 0) {
+    if (totalPrice() === 0) {
       swal({
-        title: 'no hay nada en tu carrito',
+        title: 'No hay nada en tu carrito',
         icon: 'info',
-        text: 'vuelve al inicio para seguir viendo nuestros productos',
+        text: 'Vuelve al inicio para seguir viendo nuestros productos',
       })
       return
     }
     if (!nombre || !email || !telefono || !direccion) {
       swal({
-        title: 'completa los campos requeridos',
-        text: 'debes completar todos los campos',
+        title: 'Completa los campos requeridos',
+        text: 'Debes completar todos los campos',
         icon: 'warning',
         button: 'cerrar',
         timer: 3000,
@@ -81,66 +79,62 @@ export default function Checkout() {
       return
     }
 
-    if (validateEmail(email) == false) {
+    if (!validateEmail(email)) {
       return
     }
 
-    if (validateTelefono(telefono) == false) {
+    if (!validateTelefono(telefono)) {
       return
     }
 
-    addDoc(ordersCollection, order).then(
-      ({ id }) =>
-        swal({
-          icon: 'success',
-          title: 'pedido recibido con exito',
-          text:
-            'Nos vamos a comunicar a tu email, tu codigo de pedido es : ' + id,
-        }),
-      clearCart(),
-    )
+    addDoc(ordersCollection, order).then(({ id }) => {
+      swal({
+        icon: 'success',
+        title: 'Pedido recibido con éxito',
+        text: 'Nos vamos a comunicar a tu email, tu código de pedido es: ' + id,
+      })
+      clearCart()
+    })
   }
 
   return (
-    <>
-      <div
-        style={{
-          textAlign: 'center',
-          margin: '20px',
-          borderRadius: 5,
-          padding: 10,
-          backgroundColor: 'white',
-        }}
-      >
-        <h2>Total a pagar: $ {totalPrice()}</h2>
-        <div>
-          <input
-            placeholder="*Nombre"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
-          />
-          <input
-            placeholder="*Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type={'tel'}
-            placeholder="*Telefono"
-            value={telefono}
-            onChange={(e) => setTelefono(e.target.value)}
-          />
-          <input
-            placeholder="*Direccion"
-            value={direccion}
-            onChange={(e) => setDireccion(e.target.value)}
-          />
-          <p style={{ color: 'red' }}>(*campos obligatorios)</p>
-        </div>
-        <div style={{ margin: 10 }}>
-          <Button onClick={handleClick}> generar pedido </Button>
-        </div>
+    <div
+      style={{
+        textAlign: 'center',
+        margin: '20px',
+        borderRadius: 5,
+        padding: 10,
+        backgroundColor: 'white',
+      }}
+    >
+      <h2>Total a pagar: $ {totalPrice()}</h2>
+      <div>
+        <input
+          placeholder="*Nombre"
+          value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
+        />
+        <input
+          placeholder="*Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="tel"
+          placeholder="*Teléfono"
+          value={telefono}
+          onChange={(e) => setTelefono(e.target.value)}
+        />
+        <input
+          placeholder="*Dirección"
+          value={direccion}
+          onChange={(e) => setDireccion(e.target.value)}
+        />
+        <p style={{ color: 'red' }}>(*campos obligatorios)</p>
       </div>
-    </>
+      <div style={{ margin: 10 }}>
+        <Button onClick={handleClick}> Generar pedido </Button>
+      </div>
+    </div>
   )
 }

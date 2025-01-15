@@ -1,0 +1,33 @@
+.navbar-logo {
+  width: 100px;
+  height: 100px;
+  transition: transform 0.3s;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.1);
+}
+
+.navbar {
+  background-color: #fff !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link-custom {
+  font-weight: bold;
+  color: #333 !important;
+  margin: 0 15px;
+  transition: color 0.3s;
+}
+
+.nav-link-custom:hover {
+  color: #007bff !important;
+}
+
+.nav-item-large {
+  font-size: 1.1rem;
+}
+
+.shadow-sm {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}

@@ -13,7 +13,7 @@ export default function Footer() {
 
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>Derechos reservados: Pablo Di Biasi 2022</Navbar.Text>
+          <Navbar.Text>DTECNO</Navbar.Text>
         </Navbar.Collapse>
       </Container>
     </Navbar>
