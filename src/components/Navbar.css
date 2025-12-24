@@ -1,33 +1,58 @@
+/* Navbar.css */
+.elite-navbar {
+    background-color: #ffffff !important;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    border-bottom: 1px solid #f0f0f0;
+}
+
 .navbar-logo {
-  width: 100px;
-  height: 100px;
-  transition: transform 0.3s;
+    height: 50px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
 }
 
 .navbar-logo:hover {
-  transform: scale(1.1);
-}
-
-.navbar {
-  background-color: #fff !important;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
 }
 
 .nav-link-custom {
-  font-weight: bold;
-  color: #333 !important;
-  margin: 0 15px;
-  transition: color 0.3s;
+    color: #333 !important;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    position: relative;
+    padding: 5px 0 !important;
+    margin: 0 10px;
+}
+
+/* Efecto Hover Subrayado Dorado */
+.nav-link-custom::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #c5a059; /* Elite Gold */
+    transition: width 0.3s ease;
+}
+
+.nav-link-custom:hover::after,
+.nav-link-custom.active::after {
+    width: 100%;
 }
 
 .nav-link-custom:hover {
-  color: #007bff !important;
+    color: #c5a059 !important;
 }
 
-.nav-item-large {
-  font-size: 1.1rem;
+.navbar-toggler {
+    border: none !important;
+    outline: none !important;
 }
-
-.shadow-sm {
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+.navbar-toggler:focus {
+    box-shadow: none !important;
 }

@@ -1,88 +1,107 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  --elite-black: #1a1a1a;
+  --elite-gold: #c5a059;
+  --elite-grey: #f4f4f4;
+  --elite-text: #4a4a4a;
 }
 
 body {
-  background-image: url('https://i.ibb.co/Z80hVyz/pexels-skitterphoto-379526.jpg');
-  background-size: cover;
+  font-family: 'Lato', sans-serif;
+  color: var(--elite-text);
+  background-color: #ffffff;
 }
 
-.Cards {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 10px;
+h1, h2, h3, h4, h5, .navbar-brand {
+  font-family: 'Playfair Display', serif;
 }
 
-.itemlistcont {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 10px;
+/* Botones Elite Globales */
+.btn-primary, .btn-success {
+  background-color: var(--elite-black) !important;
+  border-color: var(--elite-black) !important;
+  border-radius: 0 !important; /* Bordes cuadrados son más elegantes */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
 }
 
-.navbutton {
-  margin: 10px;
+.btn-primary:hover, .btn-success:hover {
+  background-color: var(--elite-gold) !important;
+  border-color: var(--elite-gold) !important;
+  color: white !important;
 }
 
-.contact {
-  background-color: coral;
-  margin: 10px;
-  text-align: center;
-  padding: 20px;
-  border-radius: 5px;
-}
-
-.icwass {
-  width: 40px;
-}
-
-.link {
-  text-decoration: none;
-  color: black;
-}
-
-.itemCount {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.carrito {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.irCheckout {
-  background-color: aliceblue;
-  text-align: center;
-  margin: 2%;
-  padding: 10px;
-  width: auto;
-  border-radius: 5px;
-}
-
-.cartContainer {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
+/* WhatsApp Flotante Mejorado */
 .whatsapp-button {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 30px;
+  right: 30px;
   z-index: 1000;
+  transition: transform 0.3s;
+}
+.whatsapp-button:hover {
+  transform: scale(1.1);
+}
+.whatsapp-icon {
+  width: 60px;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
 }
 
-.whatsapp-icon {
-  width: 70px; /* Ajustar tamaño del ícono */
-  height: 70px;
+a {
+  text-decoration: none !important;
+}
+/* Estilos para las Cards */
+.elite-card {
+    border: none !important;
+    transition: all 0.3s ease;
+    background: transparent !important;
+}
+
+.elite-card:hover {
+    transform: translateY(-5px);
+}
+
+.elite-card .card-img-top {
+    height: 300px; /* Altura fija para uniformidad */
+    object-fit: cover;
+    border-radius: 0; /* Sin bordes redondeados */
+}
+
+.elite-card .card-body {
+    padding: 1.5rem 0; /* Espacio solo vertical */
+    text-align: center;
+}
+
+.elite-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--elite-black);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.elite-card h4 {
+    font-size: 1rem;
+    color: var(--elite-text);
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
+
+.elite-card .btn {
+    margin-top: 10px;
+    width: 100%;
+    opacity: 0; /* Botón oculto hasta hover para efecto minimalista */
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.elite-card:hover .btn {
+    opacity: 1;
+    transform: translateY(0);
 }

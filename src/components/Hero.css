@@ -1,33 +1,51 @@
 .hero {
-    background-image: url('https://images.unsplash.com/photo-1576675783366-4cf9a5f3a3ee');
+    height: 85vh; /* Casi pantalla completa */
+    width: 100%;
+    /* Reemplaza esta URL con una foto REAL de alta calidad de un mueble */
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
-    height: 20vh; /* Reducir la altura */
     display: flex;
-    justify-content: center;
     align-items: center;
-    position: relative;
-  }
-  
-  .hero-content {
+    justify-content: center;
     text-align: center;
     color: white;
-    background-color: rgba(0, 0, 0, 0.7); /* Aumentar la opacidad */
-    padding: 1rem 2rem; /* Ajustar el padding */
-    border-radius: 5px;
-  }
-  
-  .hero h1 {
-    font-size: 2.5rem; /* Ajustar tamaño de la fuente */
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
     margin-bottom: 1rem;
-  }
-  
-  .hero p {
-    font-size: 1.25rem; /* Ajustar tamaño de la fuente */
-    margin-bottom: 1.5rem;
-  }
-  
-  .btn-primary {
-    font-size: 1.25rem; /* Ajustar tamaño del botón */
-  }
-  
+    letter-spacing: -1px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-content .btn {
+    padding: 15px 40px;
+    font-size: 1rem;
+    background-color: white !important;
+    color: black !important;
+    border: none !important;
+}
+
+.hero-content .btn:hover {
+    background-color: var(--elite-gold) !important;
+    color: white !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
